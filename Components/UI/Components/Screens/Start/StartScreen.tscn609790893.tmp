@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://6f8en378na4p"]
+
+[ext_resource type="Script" uid="uid://cpivtu7n6i5n1" path="res://Components/UI/Components/Screens/Start/StartScreen.gd" id="1_1hdam"]
+[ext_resource type="PackedScene" uid="uid://bn0i7lcp8hoyj" path="res://Components/UI/Components/Panels/Auth/AuthPanel.tscn" id="1_8hhwx"]
+[ext_resource type="PackedScene" uid="uid://smnkf7vu50wl" path="res://Components/UI/Components/Panels/News/NewsPanel.tscn" id="2_1hdam"]
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1hdam")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AuthPanel" parent="HBoxContainer" instance=ExtResource("1_8hhwx")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NewsPanel" parent="HBoxContainer" instance=ExtResource("2_1hdam")]
+layout_mode = 2
+size_flags_horizontal = 3

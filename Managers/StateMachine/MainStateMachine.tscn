@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm6yqvuhamxd"]
+
+[ext_resource type="Script" uid="uid://15vx20yv3mbr" path="res://Managers/StateMachine/MainStateMachine.gd" id="1_488wy"]
+[ext_resource type="Script" uid="uid://b0eww08p6qusx" path="res://Managers/StateMachine/States/Start.gd" id="2_pgyfl"]
+[ext_resource type="Script" uid="uid://bfgftaxe1ivma" path="res://Managers/StateMachine/States/Playmat.gd" id="3_cyfjs"]
+
+[node name="MainStateMachine" type="Node" node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("1_488wy")
+initial_node_state = NodePath("start")
+
+[node name="start" type="Node" parent="."]
+script = ExtResource("2_pgyfl")
+
+[node name="playmat" type="Node" parent="."]
+script = ExtResource("3_cyfjs")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkfid6uo3n7e6"]
+
+[ext_resource type="Script" uid="uid://bdxfjjw8e5tes" path="res://Main.gd" id="1_glv2v"]
+[ext_resource type="Script" uid="uid://c3vrwiaia0gry" path="res://Managers/CameraManager.gd" id="2_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://daay87hsim8vc" path="res://Components/Map/Map.tscn" id="2_r0du0"]
+[ext_resource type="PackedScene" uid="uid://k33bfmocm1sh" path="res://Components/UI/UI.tscn" id="3_cm0pq"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_glv2v")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="World"]
+script = ExtResource("2_cm0pq")
+
+[node name="Map" parent="World" instance=ExtResource("2_r0du0")]
+
+[node name="MainUI" parent="." instance=ExtResource("3_cm0pq")]
+layout_mode = 1

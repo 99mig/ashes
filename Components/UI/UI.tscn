@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://k33bfmocm1sh"]
+
+[ext_resource type="Theme" uid="uid://dgmxigy7hq0ju" path="res://Static/Resources/Theme/UITheme.tres" id="1_8eqyd"]
+[ext_resource type="Script" uid="uid://dkqihylsucgin" path="res://Components/UI/UI.gd" id="1_x0hyn"]
+
+[node name="MainUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_8eqyd")
+script = ExtResource("1_x0hyn")
+
+[node name="Canvas" type="CanvasLayer" parent="."]
