@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://byvgh835gvoyt"]
+
+[ext_resource type="Script" uid="uid://dsdavmv608q02" path="res://Components/Map/Components/Slots/Slot.gd" id="1_obwo6"]
+[ext_resource type="TileSet" uid="uid://c78m3pcwe60gb" path="res://Static/Resources/TileSet/01_00_TILES.tres" id="2_djcvf"]
+
+[node name="Slot" type="Node2D"]
+script = ExtResource("1_obwo6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+offset = Vector2(-96, 16)
+
+[node name="SlotSprite" type="TileMapLayer" parent="."]
+visible = false
+tile_map_data = PackedByteArray(0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 14, 0, 0, 0)
+tile_set = ExtResource("2_djcvf")
+
+[node name="SlotArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 7
+
+[node name="SlotCollision" type="CollisionPolygon2D" parent="SlotArea"]
+polygon = PackedVector2Array(-220, 32, -128, 100, 28, -16, -64, -85)
+
+[connection signal="mouse_entered" from="SlotArea" to="." method="_on_slot_area_mouse_entered"]
+[connection signal="mouse_exited" from="SlotArea" to="." method="_on_slot_area_mouse_exited"]

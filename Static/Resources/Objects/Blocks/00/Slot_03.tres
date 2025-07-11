@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BLOCK" load_steps=4 format=3 uid="uid://dgqi0xud0gdw4"]
+
+[ext_resource type="Script" uid="uid://b703nd5sgvaq8" path="res://Static/Resources/Objects/Blocks/BlockModel.gd" id="1_d58ek"]
+[ext_resource type="Texture2D" uid="uid://b3toxbt1anljt" path="res://Static/Assets/Blocks/00_Blocks.png" id="2_3x6ts"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7y42p"]
+atlas = ExtResource("2_3x6ts")
+region = Rect2(256, 432, 256, 208)
+
+[resource]
+script = ExtResource("1_d58ek")
+tile_id = "Slot_03"
+max_quantity = 0
+sprite = SubResource("AtlasTexture_7y42p")
+dimensions = Vector3i(3, 5, 1)
+hover = ""
+can_be_placed = true
+rarity = 0
+type = 2
+atlas_id = 0
+atlas_coords = Vector2i(8, 27)
+metadata/_custom_type_script = "uid://b703nd5sgvaq8"

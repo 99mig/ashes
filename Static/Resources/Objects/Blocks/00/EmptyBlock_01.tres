@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="OBJECT" load_steps=4 format=3 uid="uid://bls5apaic56v1"]
+[gd_resource type="Resource" script_class="BLOCK" load_steps=4 format=3 uid="uid://bls5apaic56v1"]
 
-[ext_resource type="Script" uid="uid://b703nd5sgvaq8" path="res://Static/Resources/Objects/BlockModel.gd" id="1_75nvt"]
+[ext_resource type="Script" uid="uid://b703nd5sgvaq8" path="res://Static/Resources/Objects/Blocks/BlockModel.gd" id="1_75nvt"]
 [ext_resource type="Texture2D" uid="uid://b3toxbt1anljt" path="res://Static/Assets/Blocks/00_Blocks.png" id="2_r3u12"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sm8ms"]
@@ -10,13 +10,13 @@ region = Rect2(0, 0, 64, 64)
 [resource]
 script = ExtResource("1_75nvt")
 tile_id = "EmptyBlock_01"
-max_quantity = null
+max_quantity = 0
 sprite = SubResource("AtlasTexture_sm8ms")
 dimensions = Vector3i(1, 1, 1)
 hover = "Basic Empty Block"
 can_be_placed = false
 rarity = 0
 type = 1
-atlas_id = null
-atlas_coords = null
+atlas_id = 0
+atlas_coords = Vector2i(0, 0)
 metadata/_custom_type_script = "uid://b703nd5sgvaq8"

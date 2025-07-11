@@ -1,7 +1,6 @@
 class_name Map
 extends Node2D
 
-
 static var Main: Map
 
 func _init() -> void: 
@@ -21,6 +20,8 @@ const Services = preload("res://Components/Map/Services/MapServices.gd")
 	"Layer_00" : LayerBackGround,
 	"Layer_01" : LayerPlayMat
 	}
+
+var CurrentMapTiles : Dictionary = { } ## este diccionario implementar funciones para que se arme a medida q se ponen cosas en el mapa
 
 func _ready() -> void:
 	LayerPlayMat.tile_set = preload("res://Static/Resources/TileSet/00_00_TILES.tres")

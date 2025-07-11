@@ -21,3 +21,8 @@ class_name BLOCK extends Resource
 
 @export var atlas_id: int
 @export var atlas_coords: Vector2i
+
+@export var map_component : GlobalData.MAP_COMPONENT
+
+func _set_map_component(component : GlobalData.MAP_COMPONENT) -> void:
+	map_component = component

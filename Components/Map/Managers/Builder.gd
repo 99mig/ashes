@@ -1,60 +1,49 @@
+
 static func clear_map() -> bool :
-	for layer in Map.Main.Managers.active_layers :
-		Map.Main.Managers.active_layers[layer].clear()
+	for layer in Map.Main.ActiveLayers :
+		Map.Main.ActiveLayers[layer].clear()
 	return true
+
 
 
 static func build_map(map_data : Dictionary) -> void:
 	
-	for layer in map_data.keys() :
+	for component_layer in map_data.keys() :
 		
-		Map.Main.Services.MapEffects._restart_speed_multiplier(0.3)
+		# Map.Main.Services.MapEffects._restart_speed_multiplier(0.3)
 		
-		var cells = map_data[layer].keys()
+		var blocks = map_data[component_layer].keys()
 		#cells = Map.Main.Services.MapEffects._sort_cells_to_place(cells, "diagonal")
 
-		for cell in cells:
+		for block in blocks:
 			
-			var object_to_place = map_data[layer][cell]
-			var object_position = Map.Main.Services.MapDataSerializer._string_to_vector2i(cell)
+			var block_data = Map.Main.Services.BlocksData._load_block_data(map_data[component_layer][block])
+			var component_position = Map.Main.Services.MapDataSerializer._string_to_vector2i(block)
 
-			var object_placed = await place_object(layer, object_to_place, object_position)
+			"""
+			aca tengo que coger los valores del bloque q se va a poner y suponer que el layer es el tipo de componente
+			correspondiente a ese bloque, debo hacer un match con el GlobalData.MAP_COMPONENT y el layer para saber que 
+			tipo de escena de componente instanciar y adjuntarle el recurso del bloque, cuando se instancie la escena del tipo de componente
+			debe usar la funcion set_component del recurso
+			"""
+			
+			var block_placed = Map.Main.Managers.Components._place_component(component_layer, block_data, component_position)
+			
 
-			if object_placed:
-				GlobalSignals.emit_signal("object_placed_in_cell", object_position, layer, object_placed)
-				print("Object placed in cell: " + str(object_position))
+			if block_placed:
+				# GlobalSignals.emit_signal("block_placed_in_cell", block_position, layer, block_placed)
+				_on_tile_placed(component_layer, block_data, component_position) # -> on_componentr_placed
+				#print("Block placed in cell: " + str(component_position))
 			else:
-				print("Failed to place object in cell: " + str(object_position))
+				print("Failed to place block in cell: " + str(component_position))
 	
 
 
 
-static func place_object(map_layer : String, object_to_place : String, object_position : Vector2i) -> Resource:
-	var object_data : Resource
-	var object_placed : bool
-	
-	match map_layer:
-		"Entities" : 
-			# object_data = load(Game.Main.EntitiesManager._get_entity_data(object_to_place))
-			# object_placed = await Game.Main.EntitiesManager._spawn_new_entity(object_position, object_data)
-			# return object_placed
-			return null
-		_: 
-			object_data = load(Map.Main.Services.BlocksData._get_block_data(object_to_place))
-			object_placed = await Game.Main.Components.PlaceItems._place_block_cell_in_layer(object_position, map_layer, object_data)
-			if object_placed:
-				return object_data
-			else:
-				return null
 
-
-
-
-
-
-
-static func is_cell_empty_in_layer(object_position: Vector2i, map_layer: String) -> bool:
-	var layer = Map.Main.ActiveLayers[map_layer]
-	if layer.get_cell_tile_data(object_position) != null:
-		return false
-	return true
+static func _on_tile_placed(component_layer : String, block_placed : Resource, block_position : Vector2i) -> void:
+	# Asegura que el layer exista en el diccionario
+	if not Map.Main.CurrentMapTiles.has(component_layer):
+		Map.Main.CurrentMapTiles[component_layer] = {}
+	# Guarda el item en la posición indicada
+	Map.Main.CurrentMapTiles[component_layer][str(block_position)] = block_placed.tile_id

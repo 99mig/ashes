@@ -1,5 +1,5 @@
 class_name Game
-extends Control
+extends Node
 
 static var Main: Game
 
@@ -14,7 +14,7 @@ const Managers = preload("res://Managers/MainManagers.gd")
 
 @onready var World: Node2D = $World
 @onready var MainUI: Control = $MainUI
-@onready var Camera: Camera2D = $World/Camera2D
+@onready var Camera: Camera2D = $Camera2D
 
 @onready var CurrentGameState = GlobalData.MAIN_STATES.Start
 

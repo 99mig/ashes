@@ -1,4 +1,4 @@
 extends Node
 
 
-signal object_placed_in_cell
+signal block_placed_in_cell
