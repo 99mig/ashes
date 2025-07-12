@@ -17,6 +17,5 @@ func _on_next_transitions() -> void:
 func _on_enter() -> void:
 	UI.Main.UIManager.show_screen("PLAYMAT_SCREEN", {})
 
-
 func _on_exit() -> void:
 	UI.Main.UIManager.hide_screen()

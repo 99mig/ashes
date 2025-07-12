@@ -12,12 +12,14 @@ func _init() -> void:
 const Services = preload("res://Services/MainServices.gd")
 const Managers = preload("res://Managers/MainManagers.gd")
 
+@onready var GameInput: GameInput = $Input
 @onready var World: Node2D = $World
 @onready var MainUI: Control = $MainUI
-@onready var Camera: Camera2D = $Camera2D
+@onready var Camera: Camera2D = $Camera
+@onready var Actions: Node2D = $Actions
+
 
 @onready var CurrentGameState = GlobalData.MAIN_STATES.Start
-
 
 
 func _ready() -> void:

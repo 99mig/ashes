@@ -1,18 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkfid6uo3n7e6"]
+[gd_scene load_steps=7 format=3 uid="uid://bkfid6uo3n7e6"]
 
 [ext_resource type="Script" uid="uid://bdxfjjw8e5tes" path="res://Main.gd" id="1_glv2v"]
+[ext_resource type="Script" uid="uid://b1wcikw0tcqrn" path="res://Managers/InputManager.gd" id="2_fos0i"]
 [ext_resource type="PackedScene" uid="uid://daay87hsim8vc" path="res://Components/Map/Map.tscn" id="2_r0du0"]
+[ext_resource type="Script" uid="uid://c8307dp5petra" path="res://Services/GameActions.gd" id="3_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://k33bfmocm1sh" path="res://Components/UI/UI.tscn" id="3_cm0pq"]
 [ext_resource type="Script" uid="uid://c3vrwiaia0gry" path="res://Managers/CameraManager.gd" id="3_fos0i"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_glv2v")
 
+[node name="Input" type="Node2D" parent="."]
+script = ExtResource("2_fos0i")
+
+[node name="Actions" type="Node2D" parent="."]
+script = ExtResource("3_3dxm6")
+
 [node name="World" type="Node2D" parent="."]
 
 [node name="Map" parent="World" instance=ExtResource("2_r0du0")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
 script = ExtResource("3_fos0i")
 
 [node name="MainUI" parent="." instance=ExtResource("3_cm0pq")]
