@@ -8,7 +8,7 @@ shader_type canvas_item;
    Sube o baja este valor hasta que el bloque encaje en tu escena.   */
 uniform float iso_scale : hint_range(0.1, 4.0) = 1.0;
 
-/* Medidas originales del sprite en píxeles.  
+/* Medidas originales del sprite en píxeles.
    Pon aquí texture.get_size() para que el centrado sea perfecto.    */
 uniform vec2 sprite_size = vec2(128.0, 32.0);
 

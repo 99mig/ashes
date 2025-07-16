@@ -40,4 +40,9 @@ placeholder_text = "nombre map"
 layout_mode = 2
 text = "Guardar map"
 
+[node name="Button2" type="Button" parent="Container/VBoxContainer"]
+layout_mode = 2
+text = "print tilemap current"
+
 [connection signal="pressed" from="Container/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Container/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

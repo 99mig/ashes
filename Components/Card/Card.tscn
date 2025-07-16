@@ -13,20 +13,20 @@ script = ExtResource("1_lwicv")
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_uutmy")
 
-[node name="CardArea" type="Area2D" parent="CardSprite"]
-scale = Vector2(3.77359, 3.77359)
+[node name="CardArea" type="Area2D" parent="."]
+scale = Vector2(1.13208, 1.13208)
 
-[node name="Collision_Full" type="CollisionShape2D" parent="CardSprite/CardArea"]
+[node name="Collision_Full" type="CollisionShape2D" parent="CardArea"]
 shape = SubResource("RectangleShape2D_lwicv")
 
-[node name="Collision_Holder" type="CollisionPolygon2D" parent="CardSprite/CardArea"]
+[node name="Collision_Holder" type="CollisionPolygon2D" parent="CardArea"]
 visible = false
 position = Vector2(-71.5499, -159.883)
 polygon = PackedVector2Array(10.6, -12.3666, 136.916, 36.2166, 118.367, 287.083, -2.65, 231.433)
 
-[node name="Collision_Slot" type="CollisionPolygon2D" parent="CardSprite/CardArea"]
+[node name="Collision_Slot" type="CollisionPolygon2D" parent="CardArea"]
 visible = false
 position = Vector2(-37.0999, -10.6)
 polygon = PackedVector2Array(-113.95, 104.233, -15.0166, 203.166, 227.016, 37.0999, 117.483, -55.6499)
 
-[connection signal="mouse_entered" from="CardSprite/CardArea" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="CardArea" to="." method="_on_area_2d_mouse_entered"]

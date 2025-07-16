@@ -36,8 +36,6 @@ static func build_map(map_data : Dictionary) -> void:
 				#print("Block placed in cell: " + str(component_position))
 			else:
 				print("Failed to place block in cell: " + str(component_position))
-	
-
 
 
 
@@ -47,3 +45,15 @@ static func _on_tile_placed(component_layer : String, block_placed : Resource, b
 		Map.Main.CurrentMapTiles[component_layer] = {}
 	# Guarda el item en la posición indicada
 	Map.Main.CurrentMapTiles[component_layer][str(block_position)] = block_placed.tile_id
+
+
+
+static func _on_tile_edited(component_data, new_position : Vector2i) -> void:
+	
+	var current_position = component_data.get_component_position()
+	if current_position != new_position:
+		for layer in Map.Main.CurrentMapTiles.keys():
+			if Map.Main.CurrentMapTiles[layer].has(str(current_position)):
+				var tile_id = Map.Main.CurrentMapTiles[layer][str(current_position)]
+				Map.Main.CurrentMapTiles[layer].erase(str(current_position))
+				Map.Main.CurrentMapTiles[layer][str(new_position)] = tile_id

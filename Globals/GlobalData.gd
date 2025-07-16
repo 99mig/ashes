@@ -1,19 +1,21 @@
 extends Node
 
 """
-MAIN
+Main
 """
-const MAIN_STATE_MACHINE : String = "res://Managers/StateMachine/MainStateMachine.tscn"
+const MainGameStateMachine : String = "res://Managers/StateMachine/MainStateMachine.tscn"
 
-enum MAIN_STATES {
+enum MainGameState {
 	Start,
-	Playmat
+	Playmat,
+	SelectComponent,
+	EditComponent
 }
 
 """
-MAP
+Map
 """
-enum MAP_COMPONENT {
+enum MapComponent {
 	Background,
 	CardSlot,
 	HeroSlot,
@@ -26,12 +28,38 @@ enum MAP_COMPONENT {
 	GlobalHolder
 }
 
+"""
+Scenes
+"""
+
+const CardComponentScene : String = "res://Components/Card/Card.tscn"
 const SlotComponentScene : String = "res://Components/Map/Components/Slots/Slot.tscn"
 
+"""
+Actions
+"""
+enum ActionType {
+	SelectComponent,
+	EditComponent,
+	DragComponent
+}
+# Diccionario que mapea estados a acciones permitidas
+var ActionsOnState: Dictionary = {
+	MainGameState.Start: [],
+	MainGameState.Playmat: [ActionType.SelectComponent],
+	MainGameState.SelectComponent: [],
+	MainGameState.EditComponent: [ActionType.DragComponent, ActionType.EditComponent]
+}
+
+# Diccionario que mapea tipos de objetos a acciones válidas
+var ValidComponentAction: Dictionary = {
+	"Holder": [ActionType.SelectComponent, ActionType.EditComponent, ActionType.DragComponent],
+	"Slot": [ActionType.SelectComponent, ActionType.EditComponent, ActionType.DragComponent]
+}
 
 
 """
-OBJECT
+Blocks
 """
 enum BLOCK_RARITY {
 	Common,

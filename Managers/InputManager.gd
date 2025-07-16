@@ -16,7 +16,8 @@ func _input(event: InputEvent) -> void:
 		elif event.is_action_pressed("MouseRightClick"):
 			print("Right click")
 			var object = raycast_check_for_areas()
-			UI.Main.UIManager.show_panel("OPTIONS_PANEL", object, get_local_mouse_position())
+			if object:
+				UI.Main.UIManager.show_panel("OPTIONS_PANEL", object, get_local_mouse_position())
 		elif event.is_action_released("MouseRightClick"):
 				print("out Right click")
 

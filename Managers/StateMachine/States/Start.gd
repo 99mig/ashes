@@ -10,7 +10,7 @@ func _on_physics_process(_delta : float) -> void:
 
 
 func _on_next_transitions() -> void:
-	if Game.Main.CurrentGameState == GlobalData.MAIN_STATES.Playmat :
+	if Game.Main.CurrentGameState == GlobalData.MainGameState.Playmat :
 		transition.emit("playmat")
 
 

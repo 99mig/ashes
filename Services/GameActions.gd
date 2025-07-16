@@ -16,6 +16,19 @@ func _physics_process(delta: float) -> void:
 
 
 
+
+"""
+	SELECT COMPONENT
+"""
+
+func in_select_component(component):
+	var zoom_factor = 2
+	Game.Main.Camera.set_focus_to(component.position, zoom_factor)
+
+func out_select_component():
+	Game.Main.Camera.reset_to_default()
+
+
 """
 	DRAG
 """
@@ -30,12 +43,4 @@ func finish_drag() :
 	if object_being_dragged:
 		object_being_dragged.scale = Vector2(1,1)
 		object_being_dragged.position = Map.Main.LayerPlayMat.map_to_local(Map.Main.LayerPlayMat.local_to_map(object_being_dragged.position))
-	#var object_slot_found = Ashes.Main.AshesInputEvent.raycast_slots_areas_on_click()
-	#if object_slot_found and not object_slot_found.is_card_on_slot :
-		#object_being_dragged.position = object_slot_found.position
-		#object_being_dragged.card_collision.disabled = true
-		#object_slot_found.is_card_on_slot = true
-		#GlobalSignals.emit_signal("removing_card_on_hand", object_being_dragged)
-	#else :
-		#GlobalSignals.emit_signal("adding_card_to_hand", object_being_dragged)
 		object_being_dragged = null

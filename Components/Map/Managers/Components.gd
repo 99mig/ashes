@@ -4,9 +4,9 @@ extends Node
 static func _place_component(component_layer : String, block_data : Object, component_position : Vector2i) -> bool:
 	var component_placed : bool = false
 	
-	var component_layer_enum = GlobalData.MAP_COMPONENT.keys().find(component_layer)
+	var component_layer_enum = GlobalData.MapComponent.keys().find(component_layer)
 	if component_layer_enum == -1 :
-		printerr("No se encontro el layer en el enum GlobalData.MAP_COMPONENT")
+		printerr("No se encontro el layer en el enum GlobalData.MapComponent")
 		return false
 	
 
@@ -42,13 +42,14 @@ static func _place_background(block_data : Object, component_position : Vector2i
 
 
 
-static func _place_slot(component_layer : GlobalData.MAP_COMPONENT, block_data : Object, component_position : Vector2i) -> bool :
+static func _place_slot(component_layer : GlobalData.MapComponent, block_data : Object, component_position : Vector2i) -> bool :
 	var new_slot = load(GlobalData.SlotComponentScene).instantiate()
+	new_slot.name = "Slot_" + str(component_position)
 	Map.Main.LayerPlayMat.add_child(new_slot)
 	new_slot._set_data(component_layer, block_data, component_position)
 	return true
 
-static func _place_holder(component_layer : GlobalData.MAP_COMPONENT, block_data : Object, component_position : Vector2i) -> bool :
+static func _place_holder(component_layer : GlobalData.MapComponent, block_data : Object, component_position : Vector2i) -> bool :
 	var new_holder = load(GlobalData.SlotComponentScene).instantiate()
 	Map.Main.LayerPlayMat.add_child(new_holder)
 	new_holder._set_data(component_layer, block_data, component_position)

@@ -19,7 +19,7 @@ const Managers = preload("res://Managers/MainManagers.gd")
 @onready var Actions: Node2D = $Actions
 
 
-@onready var CurrentGameState = GlobalData.MAIN_STATES.Start
+@onready var CurrentGameState = GlobalData.MainGameState.Start
 
 
 func _ready() -> void:
@@ -27,5 +27,5 @@ func _ready() -> void:
 
 
 func _set_main_state_machine() -> void :
-	var MainStateMachineScene = load(GlobalData.MAIN_STATE_MACHINE).instantiate()
+	var MainStateMachineScene = load(GlobalData.MainGameStateMachine).instantiate()
 	add_child(MainStateMachineScene)
